@@ -1,4 +1,4 @@
-package com.example.practicaltest02;
+package ro.pub.cs.systems.pdsd.practicaltest02;
 
 import android.app.Activity;
 import android.os.Bundle;

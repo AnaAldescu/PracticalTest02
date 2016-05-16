@@ -1,4 +1,4 @@
-package com.example.practicaltest02;
+package ro.pub.cs.systems.pdsd.practicaltest02;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -9,7 +9,7 @@ public class ServerThread extends Thread {
 	private int port = 0;
 	private ServerSocket serverSocket = null;
 	
-	//private HashMap<String, WeatherForecastInformation> data = null;
+	private HashMap<String, String> data = null;
 	
 	public ServerThread(int port) {
 		this.port = port;
