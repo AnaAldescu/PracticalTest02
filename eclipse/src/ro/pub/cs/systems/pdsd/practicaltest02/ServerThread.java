@@ -5,6 +5,8 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.HashMap;
 
+import android.util.Log;
+
 public class ServerThread extends Thread {
 	private int port = 0;
 	private ServerSocket serverSocket = null;
@@ -21,7 +23,7 @@ public class ServerThread extends Thread {
 			e.printStackTrace();
 		}
 		
-		//this.data = new HashMap<String, WeatherForecastInformation>();
+		this.data = new HashMap<String, String>();
 	}
 	
 	public void setPort(int port) {
@@ -40,15 +42,13 @@ public class ServerThread extends Thread {
         return serverSocket;
     }
     
-    /*public synchronized void setData(String city,
-    								 WeatherForecastInformation weatherForecastInformation) {
-        this.data.put(city, weatherForecastInformation);
+    public synchronized void setData(String city, String definition) {
+        this.data.put(city, definition);
     }
 
-    public synchronized HashMap<String, WeatherForecastInformation> getData() {
+    public synchronized HashMap<String, String> getData() {
         return data;
     }
-    */
     
     @Override
     public void run() {
@@ -58,6 +58,8 @@ public class ServerThread extends Thread {
 				
 				CommunicationThread communicationThread = new CommunicationThread(this, socket);
 				communicationThread.start();
+				
+				Log.d(Constants.TAG, "server started");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
